@@ -1,0 +1,27 @@
+server {
+
+	listen 80;
+
+	root /home/mike/Documentos/Proyectos/hater_app/public/;
+	index index.php index.html index.htm;
+
+	# Make site accessible from http://localhost/
+	server_name haterapp.localhost;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ /index.php?$args;
+		# Uncomment to enable naxsi on this location
+		# include /etc/nginx/naxsi.rules
+	}
+
+	location ~ \.php$ {
+        try_files $uri $uri/ /index.php?$args;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+    }
+}
+
