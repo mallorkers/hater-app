@@ -9,8 +9,8 @@ An app for letting your worst thoughts about anything get out in a easy manner.
       /src -> core app code
       /templates -> Twig templates for the views.
       /vendor -> 3rd party libraries.
-    /public -> public data
-      index.php -> Only accesible file by the web server. (Entry point)
+    /public -> Public data
+      index.php -> Entry point
       /css
       /js
       /img
