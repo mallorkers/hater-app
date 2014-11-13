@@ -1,10 +1,9 @@
 #Hater App
 
 An app for letting your worst thoughts about anything get out in a easy manner.
-
 ##Directory structure
 
-``
+```
   /
     /app -> app code, not visible by anyone
       /src -> core app code
@@ -16,4 +15,4 @@ An app for letting your worst thoughts about anything get out in a easy manner.
       /js
       /img
       /fonts
-``
+```
