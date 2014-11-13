@@ -6,7 +6,9 @@ require '../3rd_party/vendor/autoload.php';
 $slim = new \Slim\Slim();
 
 $slim->get('/test', function(){
-  echo 'QUE PASA TIO';
+  $loader = new Twig_Loader_Filesystem('../app/templates');
+  $twig = new Twig_Environment($loader);
+  echo $twig->render('html.html', array());
 });
 
 $slim->get('/:name', function($name){
