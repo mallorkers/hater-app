@@ -9,4 +9,9 @@ $slim->get('/test', function(){
   echo 'QUE PASA TIO';
 });
 
+$slim->get('/:name', function($name){
+  echo 'QUE PASA ' . $name;
+});
+
+
 $slim->run();
