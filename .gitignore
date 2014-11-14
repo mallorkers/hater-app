@@ -1,2 +1,2 @@
 3rd_party/vendor/*
-!public/css/*.scss
+public/css/*.css

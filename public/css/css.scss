@@ -1,7 +1,54 @@
-$color: #CAA;
+main
+{
+  width: 30em;
+  margin: 0 auto;
+}
 
 body
 {
-	color: $color;
-	background-color: #AAA;
+  background-color: #eee;
+}
+
+.postit
+{
+  border: solid 1px #aab;
+  height: 5em;
+  width: 30em;
+  overflow: hidden;
+  border-radius: .3em;
+  background-color: #dfdfee;
+  box-shadow: 2px 2px 1px 0 #ccd;
+
+  .inputdiv
+  {
+    display: block;
+    height: 4em;
+    width: 24em;
+    padding: .5em .5em;
+    float: left;
+    outline: none;
+    overflow: hidden;
+ }
+  button
+  {
+    display: block;
+    float: right;
+    width: 6em;
+    height: 50%;
+    background-color: #ccf;
+    border: none;
+    border-left: 1px solid #aab;
+    outline: none;
+  }
+
+  button:nth-of-type(1)
+  {
+    border-bottom: 1px solid #aab;
+  }
+
+  button:active
+  {
+    background-color: #ebb;
+    outline: none;
+  }
 }
