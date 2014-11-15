@@ -1,3 +1,7 @@
+$button_color: #ccf;
+$button_border_color: #aab;
+$base_color: #dfdfee;
+
 main
 {
   width: 30em;
@@ -16,7 +20,7 @@ body
   width: 30em;
   overflow: hidden;
   border-radius: .3em;
-  background-color: #dfdfee;
+  background-color: ;
   box-shadow: 2px 2px 1px 0 #ccd;
 
   .inputdiv
@@ -35,15 +39,15 @@ body
     float: right;
     width: 6em;
     height: 50%;
-    background-color: #ccf;
+    background-color: $button_color;
     border: none;
-    border-left: 1px solid #aab;
+    border-left: 1px solid $button_border_color;
     outline: none;
   }
 
   button:nth-of-type(1)
   {
-    border-bottom: 1px solid #aab;
+    border-bottom: 1px solid $button_border_color;
   }
 
   button:active

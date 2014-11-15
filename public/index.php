@@ -5,9 +5,6 @@ require '../3rd_party/vendor/autoload.php';
 
 $slim = new \Slim\Slim();
 
-use haterApp\Test;
-$test = new Test();
-
 $slim->get('/test', function(){
   $loader = new Twig_Loader_Filesystem('../app/templates');
   $twig = new Twig_Environment($loader);
