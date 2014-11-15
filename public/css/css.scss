@@ -1,6 +1,6 @@
-$button_color: #668E34;
-$button_border_color: #668E34;
-$base_color: #08080A;
+$button_color: #B6C9A6;
+$button_border_color: #8FA27F;
+$base_color: #F5FEEF;
 
 main
 {
@@ -10,7 +10,7 @@ main
 
 body
 {
-  background-color: #eee;
+  background-color: #fafafa;
 }
 
 .postit
@@ -39,15 +39,16 @@ body
     float: right;
     width: 6em;
     height: 50%;
-    background-color: #ccf;
+    background-color: $button_color;
     border: none;
-    border-left: 1px solid #aab;
+    border-left: 1px solid $button_border_color;
     outline: none;
+    cursor: pointer;
   }
 
   button:nth-of-type(1)
   {
-    border-bottom: 1px solid #aab;
+    border-bottom: 1px solid $button_border_color;
   }
 
   button:active
