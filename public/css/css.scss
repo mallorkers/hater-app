@@ -1,6 +1,7 @@
-$button_color: #B6C9A6;
-$button_border_color: #8FA27F;
-$base_color: #F5FEEF;
+$button_color: #555;
+$button_border_color: #444;
+$base_color: #eaeaea;
+$boton_letra_color: #eaeaea;
 
 main
 {
@@ -15,7 +16,7 @@ body
 
 .postit
 {
-  border: solid 1px #aab;
+  border: solid 1px $button_border_color;
   height: 5em;
   width: 30em;
   overflow: hidden;
@@ -25,6 +26,7 @@ body
 
   .inputdiv
   {
+    color: $button_color - #222;
     display: block;
     height: 4em;
     width: 24em;
@@ -37,6 +39,7 @@ body
   {
     display: block;
     float: right;
+    color: $boton_letra_color;
     width: 6em;
     height: 50%;
     background-color: $button_color;
@@ -53,7 +56,7 @@ body
 
   button:active
   {
-    background-color: #ebb;
+    background-color: #F18436;
     outline: none;
   }
 }
