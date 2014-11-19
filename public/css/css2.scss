@@ -5,6 +5,8 @@ $button_border_color: #444;
 $base_color: #fff;
 $boton_letra_color: #eaeaea;
 
+::-moz-focus-inner { border: 0; }
+
 main
 {
   width: 30em;
@@ -76,8 +78,6 @@ body
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
-    
-    ::-moz-focus-inner { border: 0; }
 
     button:hover
     {
@@ -88,6 +88,44 @@ body
     {
       background-color: #F18436;
       outline: none;
+    }
+  }
+}
+
+.hastag_container
+{
+  width: 100%;
+  height: 2rem;
+  margin-top: -.2em;
+  background-color: #fff;
+  overflow: hidden;
+  border: solid 1px #aaa;
+  border-bottom-left-radius: .3em;
+  border-bottom-right-radius: .3em;
+
+  .hashtag
+  {
+    margin: .5rem 1rem;
+    height: 1rem;
+    font-size: .8rem;
+    outline: none;
+    
+    span
+    {
+      display: block;
+      float: left;
+      padding: .1rem .2rem 0rem .2rem;
+      border: solid 1px #bbc;
+      background-color: #cce;
+    }
+
+    .hastag_input
+    {
+      float: left;
+      height: 100%;
+      width: 4rem;
+      padding: .1rem .2rem 0rem .1rem;
+      border: solid 1px #bbc;
     }
   }
 }
