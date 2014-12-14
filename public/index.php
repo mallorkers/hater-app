@@ -4,7 +4,7 @@ ini_set('display_errors', '1');
 require '../3rd_party/vendor/autoload.php';
 
 $slim = new \Slim\Slim();
-
+echo PHP_VERSION;
 $loader = new Twig_Loader_Filesystem('../app/templates');
 $twig = new Twig_Environment($loader);
 
