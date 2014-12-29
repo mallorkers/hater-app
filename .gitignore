@@ -3,3 +3,4 @@ public/css/*.css
 !font-awesome.min.css
 .*
 !.gitignore
+composer.phar
