@@ -1,0 +1,49 @@
+$button_color: #555
+$button_border_color: #444
+$base_color: #eaeaea
+$boton_letra_color: #eaeaea
+
+main
+  width: 30em
+  margin: 0 auto
+
+body
+  background-color: #fafafa
+
+.postit
+  border: solid 1px $button_border_color
+  height: 5em
+  width: 30em
+  overflow: hidden
+  border-radius: .3em
+  background-color: $base_color
+  box-shadow: 2px 2px 1px 0 #ccd
+
+  .inputdiv
+    color: $button_color - #222
+    display: block
+    height: 4em
+    width: 24em
+    padding: .5em .5em
+    float: left
+    outline: none
+    overflow: hidden
+
+  button
+    display: block
+    float: right
+    color: $boton_letra_color
+    width: 6em
+    height: 50%
+    background-color: $button_color
+    border: none
+    border-left: 1px solid $button_border_color
+    outline: none
+    cursor: pointer
+
+  button:nth-of-type(1)
+    border-bottom: 1px solid $button_border_color
+
+  button:active
+    background-color: #F18436
+    outline: none
