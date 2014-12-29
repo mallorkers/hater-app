@@ -1,0 +1,108 @@
+@import url(http://fonts.googleapis.com/css?family=Sanchez)
+
+$button_color: #7C7
+$button_border_color: #444
+$base_color: #fff
+$boton_letra_color: #eaeaea
+
+::-moz-focus-inner
+  border: 0
+
+main
+  width: 30em
+  margin: 0 auto
+
+/*html { font-size: 15px }*/
+
+body
+  background-color: #fafafa
+
+.postit
+  border: solid 2px #ded
+  height: 5em
+  width: 30em
+  overflow: hidden
+  border-radius: .3em
+  background-color: $base_color
+  box-shadow: 0 0 5px 1px #ded
+  position: relative
+  top: 0
+  bottom: 0
+
+  .inputdiv
+    font-family: 'Sanchez'
+    color: #666
+    display: block
+    float: left
+    height: 4rem
+    width: 28rem
+    padding: .5rem .5rem
+    outline: none
+    overflow: hidden
+    font-size: .94rem
+
+  .button_container
+    width: 1rem
+    overflow: visible
+    position: relative
+    float: left
+
+    button
+      position: relative
+      left: 0rem
+      display: block
+      float: left
+      color: $boton_letra_color
+      width: 4rem
+      height: 3rem
+      margin: -2rem 0 0 0
+      top: 3rem
+      background-color: $button_color
+      border: none
+      border: 2px solid $button_color + #411
+      outline: none
+      cursor: pointer
+      padding: 0
+      box-shadow: 0 0 4px 1px #ada
+      border-radius: .5rem
+      transition: left .2s
+
+      border-top-right-radius: 0
+      border-bottom-right-radius: 0
+
+    button:hover
+      left: -2.5rem
+
+    button:active
+      background-color: #F18436
+      outline: none
+
+.hastag_container
+  width: 100%
+  height: 2rem
+  margin-top: -.2em
+  background-color: #fff
+  overflow: hidden
+  border: solid 1px #aaa
+  border-bottom-left-radius: .3em
+  border-bottom-right-radius: .3em
+
+  .hashtag
+    margin: .5rem 1rem
+    height: 1rem
+    font-size: .8rem
+    outline: none
+    
+    span
+      display: block 
+      float: left
+      padding: .1rem .2rem 0rem .2rem
+      border: solid 1px #bbc
+      background-color: #cce
+
+    .hastag_input
+      float: left
+      height: 100%
+      width: 4rem
+      padding: .1rem .2rem 0rem .1rem
+      border: solid 1px #bbc
