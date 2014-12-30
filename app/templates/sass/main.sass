@@ -1,6 +1,7 @@
 $font_size: 16px
 $header_col: #99F
 $header_col_dark: $header_col - #555
+$transition_t: .35s
 
 ul
 	list-style: none
@@ -32,7 +33,9 @@ main
 				padding: 0 1em
 				height: $font_size * 4
 				font-weight: bold
-				transition: color .3s, background-color .3s
+				box-sizing: border-box
+				border-bottom: 3px solid $header_col
+				transition: color $transition_t, background-color $transition_t, border-bottom $transition_t
 			
 				span
 					color: $header_col_dark
@@ -45,6 +48,7 @@ main
 			li:hover
 				color: $header_col_dark - #111
 				background-color: $header_col - #111
+				border-bottom: 3px solid $header_col_dark
 				cursor: pointer
 
 		button
@@ -57,7 +61,7 @@ main
 			border: 2px solid $header_col_dark
 			background: none
 			margin: ( -2rem / 2 ) 2rem 0 0
-			transition: color .3s, background-color .3s
+			transition: color $transition_t, background-color $transition_t
 
 		button:hover
 			cursor: pointer
