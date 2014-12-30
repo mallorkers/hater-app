@@ -1,5 +1,6 @@
 $font_size: 16px
 $header_col: #99F
+$header_col_dark: $header_col - #555
 
 ul
 	list-style: none
@@ -31,8 +32,10 @@ main
 				padding: 0 1em
 				height: $font_size * 4
 				font-weight: bold
+				transition: color .3s, background-color .3s
 			
 				span
+					color: $header_col_dark
 					display: block
 					margin: 0
 					position: relative
@@ -40,6 +43,7 @@ main
 					margin: -0.5rem 0 0 0
 
 			li:hover
+				color: $header_col_dark - #111
 				background-color: $header_col - #111
 				cursor: pointer
 
@@ -49,8 +53,8 @@ main
 			float: right
 			height: 2rem
 			border-radius: .3rem
-			color: $header_col - #555
-			border: 2px solid $header_col - #555
+			color: $header_col_dark
+			border: 2px solid $header_col_dark
 			background: none
 			margin: ( -2rem / 2 ) 2rem 0 0
 			transition: color .3s, background-color .3s
@@ -58,4 +62,4 @@ main
 		button:hover
 			cursor: pointer
 			color: $header_col
-			background-color: $header_col - #555
+			background-color: $header_col_dark
