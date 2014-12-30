@@ -1,3 +1,5 @@
+@import font_declaration
+
 $font_size: 16px
 $header_col: #99F
 $header_col_dark: $header_col - #555
@@ -24,6 +26,7 @@ main
 		background-color: $header_col
 		overflow: auto
 		position: relative
+		font-family: Montserrat
 
 		.sup_navigation
 
@@ -32,7 +35,6 @@ main
 				float: left
 				padding: 0 1em
 				height: $font_size * 4
-				font-weight: bold
 				box-sizing: border-box
 				border-bottom: 3px solid $header_col
 				transition: color $transition_t, background-color $transition_t, border-bottom $transition_t
@@ -43,7 +45,7 @@ main
 					margin: 0
 					position: relative
 					top: $font_size * 2
-					margin: -0.5rem 0 0 0
+					margin: -.7rem 0 0 0
 
 			li:hover
 				color: $header_col_dark - #111
@@ -54,6 +56,7 @@ main
 		button
 			position: relative
 			top: $font_size * 2
+			font-weight: bold
 			float: right
 			height: 2rem
 			border-radius: .3rem
@@ -67,3 +70,6 @@ main
 			cursor: pointer
 			color: $header_col
 			background-color: $header_col_dark
+
+.space
+	margin-left: 4px
