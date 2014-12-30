@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(E_ALL); //Change this in production
 ini_set('display_errors', '1');
 require '../3rd_party/vendor/autoload.php';
@@ -7,6 +8,10 @@ $slim = new \Slim\Slim();
 
 $loader = new Twig_Loader_Filesystem('../app/templates');
 $twig = new Twig_Environment($loader);
+
+$slim->get('/', function() use ($twig){
+	echo $twig->render('mainpage.html', array() );
+});
 
 $slim->get('/test', function() use ($twig){
   echo $twig->render('html.html', array());
