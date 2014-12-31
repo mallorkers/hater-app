@@ -25,8 +25,4 @@ $slim->get('/env_vars', function(){
   var_dump(getenv('USER'))."\n";
 });
 
-$slim->get('/:name', function($name){
-  echo 'QUE PASA ' . $name;
-});
-
 $slim->run();

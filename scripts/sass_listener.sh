@@ -1,2 +1,2 @@
 #!/bin/bash
-sass --watch --no-cache --sourcemap=none ./:./
+sass --watch --no-cache --sourcemap=none app/templates/sass:public/css
