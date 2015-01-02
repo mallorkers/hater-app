@@ -14,14 +14,14 @@
       
       <span>LOGIN</span>
 
-      <form action="post">
+      <form method="post" action="/login" >
         <div class="input_container">
           <label for="user_input"><i class="fa fa-user"></i></label>
-          <input id="user_input" type="text" />
+          <input id="user_input" type="text" name="user_login_input"/>
         </div>
         <div class="input_container">
           <label for="password_input"><i class="fa fa-key"></i></label>
-          <input id="password_input" type="password" />
+          <input id="password_input" type="password" name="password_login_input"/>
         </div>
         <input class="submit_button" type="submit" value="ENTER">
       </form>

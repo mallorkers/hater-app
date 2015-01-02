@@ -25,4 +25,10 @@ $slim->get('/env_vars', function(){
   var_dump(getenv('USER'))."\n";
 });
 
+$slim->post('/login', function() use ($slim){
+	echo $slim->request->post('user_login_input');
+	echo '<br>';
+	echo $slim->request->post('password_login_input');
+});
+
 $slim->run();
