@@ -87,7 +87,7 @@ main
 	z-index: 2
 	background-color: rgba( 0, 0, 0, 0.6 )
 
-	div
+	.login_box
 		position: relative
 		width: 300px
 		height: auto
@@ -108,19 +108,26 @@ main
 			font-weight: bold
 			text-align: center
 
-		input:nth-child(1)
+		.input_container:nth-child(1)
 			margin-top: 3em
 
-		input
-			border: none
-			display: block
-			height: 2em
+		.input_container
+			text-align: center
 			margin: 0 auto
 			margin-top: 1.5em
-			border: 1px solid #C9C9C9
-			background-color: #DDD
 
-		button
+			label
+				margin: 0
+				padding: 0 .3em
+	
+			input
+				border: 1px solid #C9C9C9
+				padding: 0 .3rem
+				margin: 0
+				background-color: #DDD
+				height: 2em
+
+		.submit_button
 			font-weight: bold
 			height: 2em
 			color: #222
@@ -132,11 +139,11 @@ main
 			cursor: pointer
 			transition: color $transition_t, background-color $transition_t
 
-		button:hover
+		.submit_button:hover
 			color: #EEE
 			background-color: #222
 
-		button:active
+		.submit_button:active
 			position: relative
 			padding: 0 6px
 			top: .1em

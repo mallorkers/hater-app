@@ -8,23 +8,29 @@
 </head>
 <body>
 
-  <dialog id="target" class="login_screen hidden">
+  <div id="target" class="login_screen hidden">
     
-    <div>
+    <div class="login_box">
       
       <span>LOGIN</span>
 
       <form action="post">
-        <input type="text">
-        <input type="password">
-
+        <div class="input_container">
+          <label for="user_input"><i class="fa fa-user"></i></label>
+          <input id="user_input" type="text" />
+        </div>
+        <div class="input_container">
+          <label for="password_input"><i class="fa fa-key"></i></label>
+          <input id="password_input" type="password" />
+        </div>
+        <input class="submit_button" type="submit" value="ENTER">
       </form>
 
-      <button>ENTER</button>
+      <!-- <button>ENTER</button> -->
 
     </div>
 
-  </dialog>
+  </div>
 
   <main>
     
@@ -40,7 +46,7 @@
 
       <button class="login_button">
         <span>LOGIN</span>
-        <li class="fa fa-user space"></li>
+        <i class="fa fa-user space"></i>
       </button>
 
     </header>
