@@ -24,4 +24,18 @@ $(document).ready(function(){
 		}
 	});
 
+	$(".submit_button").on('click', function(event){
+		event.preventDefault();
+		$.ajax("/login", {
+			complete: function(data, status){ console.log(data); },
+			data: { user_login_input: "asdasd", password_login_input: "passwordguapa" },
+			type: 'POST'
+		});
+	});
+
+	function show_data(data, status)
+	{
+		console.log(data);
+	}
+
 });
