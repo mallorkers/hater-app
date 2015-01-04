@@ -54,7 +54,7 @@
 
 Esquema publicación:
 ``` javascript
- {
+{
     "_id": 
     "tag": 
     "usuario": // id
@@ -69,7 +69,7 @@ Esquema publicación:
      ]
      }
 
-     ```  
+```  
    Tags: 'Amor',  'Dinero', 'Estudios', 'Familia', 'Política', 'Tecnologia', 'Sexo', 'Trabajo', 'Televisión', 'Salud', 'Otros'
 
 ## Nueva publicacón  (se debe añadir primero a moderados)
@@ -83,7 +83,7 @@ Solicitud [POST] /api/moderados
     "sexo": 
     "mensaje":   
     }
-    ``` 
+``` 
 respuesta
     
 ``` javascript
@@ -97,7 +97,7 @@ respuesta
     "rechazado":
      }
 
-     ```  
+```  
     
     
 Solicitud [PUT] /api/moderados/:id/:[positivo|negativo]
@@ -120,7 +120,7 @@ Respuesta
     "rechazado":
      }
 
- ```  
+```  
 
 
 
@@ -135,7 +135,7 @@ Solicitud [POST] /publiaciones
     "sexo": 
     "mensaje":    
     }
-    ``` 
+``` 
  Respuesta
     
 ``` javascript
