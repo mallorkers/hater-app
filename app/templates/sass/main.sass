@@ -1,8 +1,9 @@
 @import font_declaration
 
 $font_size: 16px
-$header_col: #99F
+$header_col: #393939
 $header_col_dark: $header_col - #555
+$accent_col: #EFB16B
 $transition_t: .35s
 
 ul
@@ -48,7 +49,7 @@ main
 				transition: color $transition_t, background-color $transition_t, border-bottom $transition_t
 			
 				span
-					color: $header_col_dark
+					color: $accent_col
 					display: block
 					margin: 0
 					position: relative
@@ -56,9 +57,8 @@ main
 					margin: -.7rem 0 0 0
 
 			li:hover
-				color: $header_col_dark - #111
 				background-color: $header_col - #111
-				border-bottom: 3px solid $header_col_dark
+				border-bottom: 3px solid $accent_col
 				cursor: pointer
 
 		button
@@ -68,8 +68,8 @@ main
 			float: right
 			height: 2rem
 			border-radius: .3rem
-			color: $header_col_dark
-			border: 2px solid $header_col_dark
+			color: $accent_col	
+			border: 2px solid $accent_col
 			background: none
 			margin: ( -2rem / 2 ) 2rem 0 0
 			transition: color $transition_t, background-color $transition_t
@@ -77,7 +77,7 @@ main
 		button:hover
 			cursor: pointer
 			color: $header_col
-			background-color: $header_col_dark
+			background-color: $accent_col
 
 .login_screen
 	display: block
