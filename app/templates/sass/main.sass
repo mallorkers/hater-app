@@ -57,7 +57,7 @@ main
 					margin: -.7rem 0 0 0
 
 			li:hover
-				background-color: $header_col - #111
+				background-color: $header_col - #191919
 				border-bottom: 3px solid $accent_col
 				cursor: pointer
 
@@ -149,10 +149,19 @@ main
 			top: .1em
 			left: .1em
 
+//Drop shadow for all the active inputs except the "send" button
+form input:focus:not([type="submit"])
+	transition: border $transition_t + .5s, box-shadow $transition_t + .5s
+	box-shadow: 0 0 2px 0 $accent_col
+	border: 1px solid $accent_col
 
-form input:focus
-	transition: box-shadow .4s 
-	box-shadow: 0 0 4px #888
+.valid_input
+	box-shadow: 0 0 2px 0 #44E944 !important
+	border: 1px solid #44E944 !important
+
+.invalid_input
+	box-shadow: 0 0 2px 0 #FF4444 !important
+	border-color: #FF4444 !important
 
 .space
 	margin-left: 4px

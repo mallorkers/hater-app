@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+//TODO: Clean this shit
+//TODO: Create a simple framework for preventing default form's being sended the normal way
+// and force sending them via ajax
+
 	var opacity1 = { opacity: 1 };
 	var opacity0 = { opacity: 0 };
 
@@ -37,5 +41,24 @@ $(document).ready(function(){
 	{
 		console.log(data);
 	}
+
+	$("#user_input").on('input', function(event){
+		var input = $(this);
+		var regex = /([A-Z]|[0-9]|_)+/i;
+		var match = regex.exec( input.val() )[0];
+		if( input.val().length >= 4 &&
+			input.val().length <= 14 &&
+			input.val().length == match.length )
+		{
+			input.removeClass("invalid_input");
+			input.addClass("valid_input");
+		}
+		else
+		{
+			input.addClass("invalid_input");
+			input.removeClass("valid_input");
+		}
+
+	});
 
 });
