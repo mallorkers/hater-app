@@ -127,6 +127,11 @@ main
 				background-color: #DDD
 				height: 2em
 
+			input:focus:not([type="submit"])
+				transition: border $transition_t, box-shadow $transition_t
+				box-shadow: 0 0 2px 0 $accent_col
+				border: 1px solid $accent_col
+
 		.submit_button
 			font-weight: bold
 			height: 2em
@@ -150,14 +155,10 @@ main
 			left: .1em
 
 //Drop shadow for all the active inputs except the "send" button
-form input:focus:not([type="submit"])
-	transition: border $transition_t + .5s, box-shadow $transition_t + .5s
-	box-shadow: 0 0 2px 0 $accent_col
-	border: 1px solid $accent_col
 
 .valid_input
 	box-shadow: 0 0 2px 0 #44E944 !important
-	border: 1px solid #44E944 !important
+	border-color: #44E944 !important
 
 .invalid_input
 	box-shadow: 0 0 2px 0 #FF4444 !important
