@@ -150,11 +150,18 @@ main
 			left: .1em
 
 
+form input:focus
+	transition: box-shadow .4s 
+	box-shadow: 0 0 4px #888
+
 .space
 	margin-left: 4px
 
 ::-moz-focus-inner
 	border: 0
+
+*:focus
+	outline: none
 
 .hidden
 	display: none
