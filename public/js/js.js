@@ -47,7 +47,7 @@ $(document).ready(function(){
 		var regex = /([A-Z]|[0-9]|_)+/i;
 		var match = regex.exec( input.val() )[0];
 		if( input.val().length >= 4 &&
-			input.val().length <= 14 &&
+			input.val().length <= 10 &&
 			input.val().length == match.length )
 		{
 			input.removeClass("invalid_input");
