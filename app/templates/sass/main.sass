@@ -113,6 +113,7 @@ main
 
 		.input_container
 			text-align: center
+			position: relative
 			margin: 0 auto
 			margin-top: 1.5em
 
@@ -122,6 +123,7 @@ main
 	
 			input
 				border: 1px solid #C9C9C9
+				width: 9rem
 				padding: 0 .3rem
 				margin: 0
 				background-color: #DDD
@@ -131,6 +133,17 @@ main
 				transition: border $transition_t, box-shadow $transition_t
 				box-shadow: 0 0 2px 0 $accent_col
 				border: 1px solid $accent_col
+
+			.login_tip
+				display: none
+				font-size: .7rem
+				width: 12rem
+				margin-left: -12rem / 2
+				margin-top: 1rem
+				text-align: justify
+				color: #444
+				position: relative
+				left: 50%
 
 		.submit_button
 			font-weight: bold
@@ -174,5 +187,5 @@ main
 	outline: none
 
 .hidden
-	display: none
+	display: none !important
 	opacity: 0

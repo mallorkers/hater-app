@@ -52,11 +52,13 @@ $(document).ready(function(){
 		{
 			input.removeClass("invalid_input");
 			input.addClass("valid_input");
+			$(".login_tip").hide(200);
 		}
 		else
 		{
 			input.addClass("invalid_input");
 			input.removeClass("valid_input");
+			$(".login_tip").show(200);
 		}
 
 	});
