@@ -24,7 +24,7 @@ $(document).ready(function(){
 	$('.login_screen').on('click', function(event){
 		if(event.target.id === 'target')
 		{
-				$('.login_screen').animate(opacity0, options2);
+			$('.login_screen').animate(opacity0, options2);
 		}
 	});
 
@@ -42,9 +42,14 @@ $(document).ready(function(){
 		console.log(data);
 	}
 
+	$(".send_publication").on('click', function(){
+		alert("Esperate un poco tronco");
+	});
+
 	$("#user_input").on('input', function(event){
 		var input = $(this);
 		var regex = /([A-Z]|[0-9]|_)+/i;
+		if( input.val() === "" ) return;
 		var match = regex.exec( input.val() )[0];
 		if( input.val().length >= 4 &&
 			input.val().length <= 10 &&
