@@ -49,7 +49,7 @@ $(document).ready(function(){
 	$("#user_input").on('input', function(event){
 		var input = $(this);
 		var regex = /([A-Z]|[0-9]|_)+/i;
-		if( input.val() === "" ) return;
+		if( input.val().length === 0 ) return;
 		var match = regex.exec( input.val() )[0];
 		if( input.val().length >= 4 &&
 			input.val().length <= 10 &&
