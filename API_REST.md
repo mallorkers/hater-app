@@ -20,43 +20,19 @@
 **Nombre bd:** haterapp
 ### Colecciones 
 
-|Publicaciones |Moderados | Comentarios  |
-|--------|--------| ---------|
-| Contiene los mensajes publicados. | Contiene los mensajes que están por moderar.   |  Contiene los comentarios de cada publicación. |
+|Publicar |Moderar | Comentarios  | Usuarios |
+|--------|--------| ---------|------- |
+| Contiene los mensajes publicados. | Contiene los mensajes que están por moderar.   |  Contiene los comentarios de cada publicación. | Contiene información de los usuarios. |
+##Esquemas
 
-#Rutas
+#### Esquema publicar:
 
-#### Publicaciones
-| Ruta | Método |  Descripción|
-|--------|--------|-------|
-|      api/publicaciones  |     GET   |   Obtiene 10 publicaciones.   |
-|	api/publicaciones|	POST| 	Añade una publicación.				|
-|api/publicaciones/p/:pag|GET|Obtiene las siguientes 10 publicaciones|
-
-
-
-#### Moderados
-| Ruta | Método |       Descripción|
-|--------|--------|-------|
-| api/moderados/{id}  | GET  | Obtiene una publicación de la colección de moderados |
-|	api/moderados	|	POST| Añade una publicacion a la colección moderados.|
-|api/moderados/:id/:[positivo/negativo]| PUT | Actualiza los campos de votación |
-| api/moderar/:id | DELETE | Elimina una publicación de la colección moderados|
-
-
-#### Usuarios
-| Ruta | Método |  Descripción|
-|--------|--------|-------|
-|      api/usuario | GET   |   Obtiene todos los usuarios.   |
-|	api/usuario/id |	GET | 	Obtiene un usuario por su id.	|
-|	api/usuario	|		POST	| 	Añade un usuario.		|
-|	api/usuario	|	DELETE		| 	Elimina un usuario.		|
-
-Esquema publicación:
 ``` javascript
-{
+ {
     "_id": 
-    "tag": 
+    "tags": [
+      
+    ]
     "usuario": // id
     "sexo":  // "m" o "f"
     "fecha":  // new Date()
@@ -68,17 +44,72 @@ Esquema publicación:
           id1, id2
      ]
      }
-
 ```  
    Tags: 'Amor',  'Dinero', 'Estudios', 'Familia', 'Política', 'Tecnologia', 'Sexo', 'Trabajo', 'Televisión', 'Salud', 'Otros'
+   
+####Esquema moderar:
 
-## Nueva publicacón  (se debe añadir primero a moderados)
+``` javascript
+ {
+    "_id": 
+    "tags": 
+    "usuario": // id
+    "sexo":  
+    "mensaje":
+    "aprobado": 
+    "rechazado":
+    "usuarios_moderado": //id
+     }
 
-Solicitud [POST] /api/moderados
+``` 
+
+
+
+
+
+
+
+#Rutas
+
+#### Publicados
+| Ruta | Método |  Descripción|
+|--------|--------|-------|
+|      api/publicados  |     GET   |   Obtiene 10 publicaciones.   |
+|	[api/publicados](#api/publicados)|	POST| 	Añade una publicación.				|
+|api/publicados/p/:pag|GET|Obtiene las siguientes 10 publicaciones|
+
+
+
+#### Moderar
+| Ruta | Método |       Descripción|
+|--------|--------|-------|
+| api/moderar/{id}  | GET  | Obtiene una publicación de la colección de moderados |
+|	[api/moderar](#api/moderar_POST)	|	POST| Añade una publicacion a la colección moderados.|
+|api/moderar/:id/:[positivo/negativo]| PUT | Actualiza los campos de votación |
+| api/moderar/:id | DELETE | Elimina una publicación de la colección moderados|
+
+
+#### Usuarios
+| Ruta | Método |  Descripción|
+|--------|--------|-------|
+|      api/usuarios| GET   |   Obtiene todos los usuarios.   |
+|	api/usuarios/id |	GET | 	Obtiene un usuario por su id.	|
+|	api/usuarios	|		POST	| 	Añade un usuario.		|
+|	api/usuarios	|	DELETE		| 	Elimina un usuario.		|
+
+
+---
+
+#PUBLICAR
+
+
+## Nueva publicacón
+
+######Solicitud [POST] /api/moderar
 
 ``` javascript
   {
-    "tag": 
+    "tags": 
     "usuario": //id
     "sexo": 
     "mensaje":   
@@ -89,7 +120,7 @@ respuesta
 ``` javascript
  {
     "_id": 
-    "tag": 
+    "tags": 
     "usuario": // id
     "sexo":  
     "mensaje":
@@ -97,9 +128,66 @@ respuesta
     "rechazado":
      }
 
+``` 
+
+## Crear un nueva publicación
+<a name="api/publicados">
+######Solicitud [POST] /publiaciones
+
+``` javascript
+	{
+    "tags": 
+    "usuario": 
+    "sexo": 
+    "mensaje":    
+    }
+``` 
+ Respuesta
+    
+``` javascript
+
+	{
+	"id": 
+    "tags": 
+    "sexo": 
+    "mensaje": 
+    "num_comentarios"
+ 	"votos_positivos":
+    "votos_negativos"
+	"comentarios": [
+      //	id1,id2...
+     ] 
+``` 
+
+#MODERAR
+<a name="api/moderar_POST">
+###### Solicitud [POST] /api/moderar/
+
+``` javascript
+  {
+    "tags": 
+    "usuario": //id 
+    "sexo": 
+    "mensaje":   
+    }
 ```  
-    
-    
+
+Respuesta
+``` javascript
+ 
+  {
+    "_id": 
+    "tag": 
+    "usuario": // id
+    "sexo":  
+    "mensaje":
+    "aprobado": 
+    "rechazado":
+     }
+
+```
+
+
 Solicitud [PUT] /api/moderados/:id/:[positivo|negativo]
 
 
@@ -120,37 +208,10 @@ Respuesta
     "rechazado":
      }
 
-```  
-
-
-
-## Crear un nueva publicación
-
-Solicitud [POST] /publiaciones
-
-``` javascript
-	{
-    "tag": 
-    "usuario": 
-    "sexo": 
-    "mensaje":    
-    }
 ``` 
- Respuesta
-    
-``` javascript
 
-	{
-	"id": 
-    "tag": 
-    "sexo": 
-    "mensaje": 
-    "num_comentarios"
- 	"votos_positivos":
-    "votos_negativos"
-	"comentarios": [
-      //	id1,id2...
-     ] 
-``` 
+
+
+
 
 
