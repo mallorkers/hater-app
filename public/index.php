@@ -11,7 +11,7 @@ $loader = new Twig_Loader_Filesystem('../app/templates');
 $twig = new Twig_Environment($loader);
 
 $slim->get('/', function() use ($twig){
-    echo $twig->render('mainpage.html', array() );
+echo $twig->render('mainpage.html', array() );
  /* $uuid4 = Uuid::uuid4();
     echo $uuid4->toString();
   if(!isset($_COOKIE['_id']))
