@@ -4,13 +4,25 @@ error_reporting(E_ALL); //Change this in production
 ini_set('display_errors', '1');
 require '../3rd_party/vendor/autoload.php';
 use haterApp\api\libs\models\Moderados;
+//use Rhumsaa\Uuid\Uuid;
 $slim = new \Slim\Slim();
 
 $loader = new Twig_Loader_Filesystem('../app/templates');
 $twig = new Twig_Environment($loader);
 
 $slim->get('/', function() use ($twig){
-	echo $twig->render('mainpage.html', array() );
+    echo $twig->render('mainpage.html', array() );
+ /* $uuid4 = Uuid::uuid4();
+    echo $uuid4->toString();
+  if(!isset($_COOKIE['_id']))
+  {   
+    echo "nueva cooke";
+    // Caduca en 10 días
+    setcookie('_id', $uuid4, time() + 10 * 24 * 60 * 60); 
+  }
+  */
+
+
 });
 
 $slim->get('/test', function() use ($twig){
@@ -41,6 +53,7 @@ $slim->post('/api/moderar', function() use ($slim){
     $body = $slim->request()->getBody();
     $input = json_decode($body); //convert the json into array
     $post = array(  
+      "_id" => Uuid::uuid4();
       "tags" => $input->tags,
       "usuario" => $input->usuario,
       "sexo"  => $input->sexo,
@@ -61,6 +74,7 @@ $slim->post('/api/moderar', function() use ($slim){
 
 
 $slim->get('/api', function() use ($slim){
+      echo "hola";
      $db = new DB;
     $db->listar();
 
