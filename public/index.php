@@ -4,23 +4,20 @@ error_reporting(E_ALL); //Change this in production
 ini_set('display_errors', '1');
 require '../3rd_party/vendor/autoload.php';
 use haterApp\api\libs\models\Moderados;
-//use Rhumsaa\Uuid\Uuid;
+use Rhumsaa\Uuid\Uuid;
 $slim = new \Slim\Slim();
 
 $loader = new Twig_Loader_Filesystem('../app/templates');
 $twig = new Twig_Environment($loader);
 
-$slim->get('/', function() use ($twig){
-echo $twig->render('mainpage.html', array() );
- /* $uuid4 = Uuid::uuid4();
-    echo $uuid4->toString();
-  if(!isset($_COOKIE['_id']))
+$slim->get('/', function() use ($twig,$slim){
+
+    if(!isset($_COOKIE['_id']))
   {   
-    echo "nueva cooke";
-    // Caduca en 10 días
-    setcookie('_id', $uuid4, time() + 10 * 24 * 60 * 60); 
+    $slim->setCookie('_id',Uuid::uuid4(), time() + 10 * 24 * 60 * 60);
   }
-  */
+
+  echo $twig->render('mainpage.html', array() );
 
 
 });
@@ -53,22 +50,60 @@ $slim->post('/api/moderar', function() use ($slim){
     $body = $slim->request()->getBody();
     $input = json_decode($body); //convert the json into array
     $post = array(  
-      "_id" => Uuid::uuid4();
+      "_id" => Uuid::uuid4()->toString(),
       "tags" => $input->tags,
       "usuario" => $input->usuario,
       "sexo"  => $input->sexo,
       'mensaje' => $input->mensaje,
        "aprobado" => 0,
-       "rechazado" => 0
+       "rechazado" => 0,
+       "usuarios_moderado" => []
        );
     $api = new Moderados; 
-    $api->saveModerados($post);
+    $api->guardarModerados($post);
      // return JSON-encoded response body
-    echoRespnse(201,$post);
+  echoResponse(201,$post);
 
   } catch (Exception $e) {
-    echoRespnse(400,$e->getMessage());
+    echoResponse(400,$e->getMessage());
   }
+
+});
+
+//_id de usuario o cookie _id
+$slim->get('/api/moderar/:_id', function($_id) use ($slim){
+    $api = new Moderados; 
+    try {
+    $response = $api->recuperarModerado($_id);
+     if(empty($respone)){
+      $response_err = array(
+        "mensaje" => "No hay más publicaciones."
+        );
+    echoResponse(204,$response_err['mensaje']);
+// ACABAR ESTA SHIT
+    }
+    } catch (Exception $e) {
+    echoResponse(400,$e->getMessage());
+  }
+
+   // else {
+      //echoResponse(200,$response);
+
+   // } 
+   
+    
+
+});
+$slim->post('/api/moderar/:_id/:votacion', function($_id,$votacion) use ($slim){
+  $api = new Moderados; 
+  try {
+      $api->moderar($votacion,$_id);
+      $slim->status(204);
+  }catch (Exception $e) {
+    echoResponse(400,$e->getMessage());
+  }
+
+
 
 });
 
@@ -86,7 +121,7 @@ $slim->get('/api', function() use ($slim){
  * @param String $status_code Codigo respuesta http
  * @param Int $response Respuesta JSON
  */
-function echoRespnse($status_code, $response) {
+function echoResponse($status_code, $response) {
     $app = \Slim\Slim::getInstance();
     // Http response code
     $app->status($status_code);
