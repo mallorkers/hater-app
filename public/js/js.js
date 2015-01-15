@@ -6,6 +6,9 @@ $(document).ready(function(){
 
 	var opacity1 = { opacity: 1 };
 	var opacity0 = { opacity: 0 };
+	var send_container_down = { top: (16 * 4) - 1 };
+	var send_container_up = { top: -(16*15) + 1}
+	var container_down = false;
 
 	var options = {
 		duration: 200,
@@ -43,7 +46,16 @@ $(document).ready(function(){
 	}
 
 	$(".send_publication").on('click', function(){
-		alert("Esperate un poco tronco");
+		if(!container_down)
+		{
+			$('.send_container').animate(send_container_down, 300);
+			container_down = true;
+		}
+		else
+		{
+			$('.send_container').animate(send_container_up, 300);
+			container_down = false;
+		}
 	});
 
 	$("#user_input").on('input', function(event){
