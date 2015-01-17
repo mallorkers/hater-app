@@ -80,4 +80,21 @@ $(document).ready(function(){
 
 	});
 
+	$("#tag_selector option").on('click', function(){
+		if( $(".tag_viewer .tag").length === 3 ) return;
+		createTagElement( $(".tag_viewer"), $(this).text() );
+		$(this).hide();
+	});
+
+	function createTagElement(parentElement, tagText)
+	{
+		var tag = $(document.createElement("span"));
+		var tag_graphic = $(document.createElement("div"));
+		tag.addClass("tag");
+		tag_graphic.addClass("tag_graphic")
+		tag.text(tagText);
+		tag.prepend(tag_graphic);
+		parentElement.append(tag);
+	}
+
 });

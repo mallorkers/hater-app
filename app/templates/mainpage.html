@@ -54,14 +54,37 @@
     
     <div class="send_container">
       <form>
-        <textarea name="hate_text" id="" rows="5"></textarea>
-        <input type="text" name="hate_tag">
-        <select name="" id="">
-          <option value="male">Hombre</option>
-          <option value="female">Mujer</option>
-          <option value="alien">Alien</option>
-        </select>
-        <input type="submit" value="SEND"></input>
+        <div class="send_box_top">
+          <label for="hate_text">¿Qué se cuece?</label>
+          <textarea name="hate_text" id="" rows="5"></textarea>
+        </div>
+        <div class="send_box_medium">
+          <label for="gender_selector">¿Que eres?</label>
+          <select name="gender_selector" id="">
+            <option value="male">Hombre</option>
+            <option value="female">Mujer</option>
+            <option value="alien">Alien</option>
+          </select>
+          <label for="tag_selector">Selecciona de 1 a 3:</label>
+          <select name="tag_selector" id="tag_selector">
+            <option value="">Amor</option>
+            <option value="">Dinero</option>
+            <option value="">Estudios</option>
+            <option value="">Familia</option>
+            <option value="">Política</option>
+            <option value="">Tecnología</option>
+            <option value="">Sexo</option>
+            <option value="">Trabajo</option>
+            <option value="">Televisión</option>
+            <option value="">Salud</option>
+          </select>
+          <div class="tag_viewer">
+
+          </div>
+        </div>
+        <div class="send_box_bottom">
+          <input type="submit" value="SEND"></input>
+        </div>
       </form>
     </div>
 

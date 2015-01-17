@@ -174,7 +174,7 @@ main
 .send_container
 	width: 500px
 	margin-left: -250px
-	height: 15em
+	height: auto
 	background-color: #f9f9f9
 	border: 1px solid #aaa
 	border-bottom-right-radius: 6px
@@ -182,13 +182,15 @@ main
 	box-shadow: 0 0 4px #BDBDBD
 	position: absolute
 	left: 50%
-	top: -15em
+	top: -15rem
+	font-family: Montserrat
+	color: #222
 
 	textarea
 		display: block
 		width: 85%
 		padding: .3rem
-		margin: 1rem auto
+		margin: .5rem auto
 		border: 1px solid #aaa
 		border-radius: 4px
 		resize: none
@@ -211,6 +213,45 @@ main
 		color: #aaa
 		background-color: #444
 
+	.send_box_top
+		padding: .3rem
+		border-bottom: 1px solid #999
+		text-align: center
+
+	.send_box_medium
+		padding: .5rem
+		border-bottom: 1px solid #999
+		text-align: center
+		padding-bottom: 4px
+
+		.tag_viewer
+			//max-width: 80%
+			//height: 1.2rem
+			//min-height: 1.2rem
+			margin-top: .5rem
+			//padding: 4px
+			font-size: 13px
+			//border: 1px solid #777
+			//border-radius: 4px
+			//box-shadow: 1px 1px 1px rgba(23,23,23, .2) inset
+			text-align: center
+			overflow: auto
+
+			.tag_graphic
+				padding-right: 2px
+				margin-right: 4px
+			.tag
+				display: inline-block
+				//float: left
+				padding-right: 4px
+				margin-right: .3rem
+				overflow: hidden
+
+	.send_box_bottom
+		padding: .5rem
+		text-align: center
+
+
 #blog_posts
 	font-size: .8rem
 	width: 80%
@@ -230,27 +271,6 @@ main
 			padding-bottom: 6px
 			border-radius-l: 4px
 			background: linear-gradient(to bottom, #f7f7f7 0%,#eae8e8 100%)
-
-			.tag
-				border: solid 1px $accent_col
-				background-color: #FCC781
-				border-radius: 2px
-				padding: 0
-				box-shadow: 0 0 2px #BBB
-				
-				.tag_graphic
-					display: inline-block
-					height: 100%
-					width: 1em
-					padding: 0 0 0 5px
-					background-color: $accent_col + #090909
-
-				.tag_graphic:before
-					content: "#"
-
-				.tag_content
-					margin: 0 2px
-					font-weight: bold
 
 			.user_name:before
 				content: " - "
@@ -280,6 +300,27 @@ main
 				transition: color $transition_t, background-color $transition_t
 				color: #EEE
 				background-color: $header_col
+
+.tag
+	border: solid 1px $accent_col
+	background-color: #FCC781
+	border-radius: 2px
+	padding: 0
+	box-shadow: 0 0 2px #BBB
+	
+	.tag_graphic
+		display: inline-block
+		height: 100%
+		width: 1em
+		padding: 0 0 0 5px
+		background-color: $accent_col + #090909
+
+	.tag_graphic:before
+		content: "#"
+
+	.tag_content
+		margin: 0 2px
+		font-weight: bold
 
 //Drop shadow for all the active inputs except the "send" button
 
