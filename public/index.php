@@ -12,13 +12,12 @@ $twig = new Twig_Environment($loader);
 
 $slim->get('/', function() use ($twig,$slim){
 
-    if(!isset($_COOKIE['_id']))
+  if(!isset($_COOKIE['_id']))
   {   
     $slim->setCookie('_id',Uuid::uuid4(), time() + 10 * 24 * 60 * 60);
   }
 
   echo $twig->render('mainpage.html', array() );
-
 
 });
 
