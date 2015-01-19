@@ -1,5 +1,5 @@
 <?php
-namespace haterApp\api\libs;
+namespace haterApp\libs;
 
 class Db {
  

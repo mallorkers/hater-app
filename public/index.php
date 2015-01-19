@@ -3,7 +3,8 @@
 error_reporting(E_ALL); //Change this in production
 ini_set('display_errors', '1');
 require '../3rd_party/vendor/autoload.php';
-use haterApp\api\libs\models\Moderados;
+use haterApp\libs\models\Moderados;
+
 use Rhumsaa\Uuid\Uuid;
 $slim = new \Slim\Slim();
 
@@ -43,79 +44,86 @@ $slim->post('/login', function() use ($slim){
 
 //_________ API REST  _________
 
-$slim->post('/api/moderar', function() use ($slim){
-  $slim->response()->header("Content-Type", "application/json");
 
-   try {
-    $body = $slim->request()->getBody();
-    $input = json_decode($body); //convert the json into array
-    $post = array(  
-      "_id" => Uuid::uuid4()->toString(),
-      "tags" => $input->tags,
-      "usuario" => $input->usuario,
-      "sexo"  => $input->sexo,
-      'mensaje' => $input->mensaje,
-       "aprobado" => 0,
-       "rechazado" => 0,
-       "usuarios_moderado" => []
-       );
-    $api = new Moderados; 
-    $api->guardarModerados($post);
-     // return JSON-encoded response body
-  echoResponse(201,$post);
 
-  } catch (Exception $e) {
-    echoResponse(400,$e->getMessage());
-  }
+// API group
+$slim->group('/v1', function () use ($slim) {
+
+  $slim->post('/moderar', function() use ($slim){
+    $slim->response()->header("Content-Type", "application/json");
+
+     try {
+      $body = $slim->request()->getBody();
+      $input = json_decode($body); //convert the json into array
+      $post = array(  
+        "_id" => Uuid::uuid4()->toString(),
+        "tags" => $input->tags,
+        "usuario" => $input->usuario,
+        "sexo"  => $input->sexo,
+        'mensaje' => $input->mensaje,
+         "aprobado" => 0,
+         "rechazado" => 0,
+         "usuarios_moderado" => []
+         );
+      $api = new Moderados; 
+      $api->guardarModerados($post);
+       // return JSON-encoded response body
+    echoResponse(201,$post);
+
+    } catch (Exception $e) {
+      echoResponse(400,$e->getMessage());
+    }
 
 });
 
 //_id de usuario o cookie _id
-$slim->get('/api/moderar/:_id', function($_id) use ($slim){
+$slim->get('/moderar/:_id', function($_id) use ($slim){
     $api = new Moderados; 
     try {
     $response = $api->recuperarModerado($_id);
-     if(empty($respone)){
+
+     if(empty($response)){
       $response_err = array(
         "mensaje" => "No hay más publicaciones."
         );
-    echoResponse(204,$response_err['mensaje']);
-// ACABAR ESTA SHIT
+       echoResponse(204,$response_err['mensaje']);
     }
+     echoResponse(200,$response);
     } catch (Exception $e) {
     echoResponse(400,$e->getMessage());
   }
 
-   // else {
-      //echoResponse(200,$response);
-
-   // } 
    
     
 
 });
-$slim->post('/api/moderar/:_id/:votacion', function($_id,$votacion) use ($slim){
+// :votacion -> aprobar o rechazar
+$slim->put('/moderar/:_idPost/:_idUsuario/:votacion', function($_idPost,$_idUsuario,$votacion) use ($slim){
+ 
   $api = new Moderados; 
   try {
-      $api->moderar($votacion,$_id);
-      $slim->status(204);
+      $api->moderar($votacion,$_idPost,$_idUsuario);
+  }catch (Exception $e) {
+    echoResponse(400,$e->getMessage());
+  }
+  echoResponse(204,"Votación correcta.");
+
+  // comprobarPublicar();
+});
+
+$slim->delete('/moderar/:_id', function($_id) use ($slim){
+
+  $api = new Moderados; 
+   try {
+  $api->borrarModerado($_id);
+  echoResponse(204,"");
   }catch (Exception $e) {
     echoResponse(400,$e->getMessage());
   }
 
-
-
-});
-
-
-$slim->get('/api', function() use ($slim){
-      echo "hola";
-     $db = new DB;
-    $db->listar();
+  });
 
 });
-
-
 /**
  * Respuesta json para el cliente.
  * @param String $status_code Codigo respuesta http

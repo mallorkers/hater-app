@@ -32,7 +32,7 @@
     "tags": [
     ]
     "usuario": // id
-    "sexo":  // masculino o femenino
+    "sexo":  // Hombre o Mujer
     "fecha":  // new Date()
     "mensaje":
     "num_comentarios":
@@ -181,10 +181,10 @@ respuesta
 
 ``` javascript
   {
-    "tags": 
-    "usuario": //id 
-    "sexo": 
-    "mensaje":   
+    "tags": ["Humor", "Sexo"],
+    "usuario": "",
+    "sexo": "Hombre",
+    "mensaje":  "Hay que acabar esto ya."
     }
 ```  
 
