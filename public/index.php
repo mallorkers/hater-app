@@ -104,9 +104,12 @@ $slim->put('/moderar/:_idPost/:_idUsuario/:votacion', function($_idPost,$_idUsua
   try {
       $api->moderar($votacion,$_idPost,$_idUsuario);
   }catch (Exception $e) {
+
     echoResponse(400,$e->getMessage());
   }
-  echoResponse(204,"Votación correcta.");
+  $slim->status(204);
+
+
 
   // comprobarPublicar();
 });
@@ -114,12 +117,27 @@ $slim->put('/moderar/:_idPost/:_idUsuario/:votacion', function($_idPost,$_idUsua
 $slim->delete('/moderar/:_id', function($_id) use ($slim){
 
   $api = new Moderados; 
-   try {
-  $api->borrarModerado($_id);
-  echoResponse(204,"");
-  }catch (Exception $e) {
-    echoResponse(400,$e->getMessage());
-  }
+  
+  $borrado= $api->borrarModerado($_id);
+  
+    if($borrado["n"] > 0) {
+
+      $respuesta = array(
+        "code" => 204, 
+        "message" => "La publicación: ".$_id." ha sido eliminada correctamente."
+        );
+      echoResponse(200,$respuesta);
+      
+    } else {
+  
+      $respuesta = array(
+        "code" => 400, 
+        "message" =>  "No existe una publiación con ese id."
+        );
+     echoResponse(400,$respuesta);
+    }
+  
+
 
   });
 

@@ -57,7 +57,7 @@ public function moderar($votacion,$_idPost,$_idUsuario){
 
 public function borrarModerado($_id){
 
-  $this->db->remove(array("_id" => $_id));
+  return $this->db->remove(array("_id" => $_id), array('w' => 1));
 
 
 }
