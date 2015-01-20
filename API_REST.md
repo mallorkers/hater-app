@@ -19,9 +19,10 @@
 **Nombre bd:** haterapp
 ### Colecciones
 
-|Publicar |Moderar | Comentarios  | Usuarios |
+|Publicados |Moderar | Comentarios  | Usuarios |
 |--------|--------| ---------|------- |
 | Contiene los mensajes publicados. | Contiene los mensajes que están por moderar.   |  Contiene los comentarios de cada publicación. | Contiene información de los usuarios. |
+
 ##Esquemas
 
 ### Esquema publicar:
@@ -85,7 +86,7 @@
 | Ruta | Método |  Descripción|
 |--------|--------|-------|
 |     [v1/publicados]()  |     GET   |   Obtiene 10 publicaciones.   |
-|	[v1/publicados]()|	POST| 	Añade una publicación.				|
+|	[v1/publicados]() **¿sobra?**|	POST| 	Añade una publicación.				|
 |v1/publicados/p/:pag|GET|Obtiene las siguientes 10 publicaciones|
 |v1/publicados/:id |DELETE|   Elimina una publicación de la colección de publicados.|
 
@@ -162,7 +163,18 @@ Envio:
 
 Respuesta:
 ``` javascript
-//Vacio
+{
+	"code": 400,
+	"message": "No se ha encontrado el registro."
+}
+
+ó
+
+{
+	"code":200,
+	"message":"El campo \"usuarios_moderado\", ha sido actualizado."
+}
+
 
 ```
 ####[DELETE]v1/moderar/:id

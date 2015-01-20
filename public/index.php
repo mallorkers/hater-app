@@ -101,13 +101,31 @@ $slim->get('/moderar/:_id', function($_id) use ($slim){
 $slim->put('/moderar/:_idPost/:_idUsuario/:votacion', function($_idPost,$_idUsuario,$votacion) use ($slim){
  
   $api = new Moderados; 
-  try {
-      $api->moderar($votacion,$_idPost,$_idUsuario);
-  }catch (Exception $e) {
-
-    echoResponse(400,$e->getMessage());
-  }
-  $slim->status(204);
+  
+      $update = $api->moderar($votacion,$_idPost,$_idUsuario);
+     
+    
+      if($update["nModified"] > 0) {
+        $cursor = $api->comprobarPublicar($_idPost);
+        $respuesta = array(
+        "code" => 200,
+        "message" => 'El campo "usuarios_moderado", ha sido actualizado.'
+        );
+    
+        echoResponse(200,$respuesta);
+      }else   {
+   
+         $respuesta = array(
+        "code" => 400, 
+        "message" => 'No se ha encontrado el registro.'
+        );
+         echoResponse(400,$respuesta);
+      }
+    
+/*
+ OJO, SI ESTABLECES EL CODIGO 204 COMO STATUS NO PUEDES ENVIAR NADA. EL BODY 
+ DE LA RESPUESTA ESTARÁ SIEMPRE VACIO.
+*/
 
 
 
@@ -123,7 +141,7 @@ $slim->delete('/moderar/:_id', function($_id) use ($slim){
     if($borrado["n"] > 0) {
 
       $respuesta = array(
-        "code" => 204, 
+        "code" => 200, 
         "message" => "La publicación: ".$_id." ha sido eliminada correctamente."
         );
       echoResponse(200,$respuesta);
