@@ -80,10 +80,12 @@ $(document).ready(function(){
 
 	});
 
-	$("#tag_selector option").on('click', function(){
+	$('#tag_selector').on('change', function(event){
+		event.preventDefault();
+		selectedOption = $(this).find(':selected');
 		if( $(".tag_viewer .tag").length === 3 ) return;
-		createTagElement( $(".tag_viewer"), $(this).text() );
-		$(this).hide();
+		createTagElement( $(".tag_viewer"), selectedOption.text() );
+		selectedOption.hide();
 	});
 
 	$('.multiple_button button').on('click', function(event){
