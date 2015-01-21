@@ -86,6 +86,12 @@ $(document).ready(function(){
 		$(this).hide();
 	});
 
+	$('.multiple_button button').on('click', function(event){
+		event.preventDefault();
+		$(this).siblings().removeClass('active_button');
+		$(this).addClass('active_button');
+	});
+
 	function createTagElement(parentElement, tagText)
 	{
 		var tag = $(document.createElement("span"));

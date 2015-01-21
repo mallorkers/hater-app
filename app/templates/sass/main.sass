@@ -185,8 +185,11 @@ main
 	top: -15rem
 	font-family: Montserrat
 	
-	label
+	> label, > span
 		color: #444
+
+	.send_box_row
+		margin-top: .5rem
 
 	textarea
 		display: block
@@ -307,6 +310,7 @@ main
 .multiple_button
 	padding: 0
 	display: inline-block
+	vertical-align: text-bottom
 	font-weight: bold
 
 	button
@@ -337,6 +341,11 @@ main
 
 	button:not(:last-child)
 		border-right: 2px solid #444
+
+.active_button
+	transition: color $transition_t, background-color $transition_t, border-bottom $transition_t
+	background-color: #444 !important
+	color: #fff !important
 
 .tag
 	border: solid 1px $accent_col
