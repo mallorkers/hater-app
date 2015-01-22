@@ -187,7 +187,7 @@ Respuesta:
 ``` javascript
 
 {
-"code": 204,
+"code": 200,
 "message": "La publicación: c29e9295-7055-4778-8e79-314934cf76b8 ha sido eliminada correctamente."
 }
 
