@@ -58,7 +58,7 @@ use Rhumsaa\Uuid\Uuid;
 
 
 public function borrarModerado($_id){
-  echo "borrarModera";
+
   return $this->db->remove(array("_id" => $_id), array('w' => 1));
 
 
@@ -78,7 +78,7 @@ public function borrarModerado($_id){
      if($cursor["aprobado"]/$total >= 0.7 ) {
 
       $this->publicar($_id);
-      $this->borrarModerado($_id);
+      // $this->borrarModerado($_id);   // Descomentar esto despues
     }else {
       $this->borrarModerado($_id);
     }
@@ -95,7 +95,7 @@ public function publicar($_id){
     "tags" => $moderado["tags"],
     "usuario" => $moderado["usuario"],
     "sexo"  => $moderado["sexo"],
-    "fecha" => "fecha",
+    "fecha" => new \MongoDate(),
     "mensaje" => $moderado["mensaje"],
     "num_comentarios" => 0,
     "votos_positivos" =>   0,

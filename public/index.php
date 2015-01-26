@@ -4,7 +4,7 @@ error_reporting(E_ALL); //Change this in production
 ini_set('display_errors', '1');
 require '../3rd_party/vendor/autoload.php';
 use haterApp\libs\models\Moderados;
-
+use haterApp\libs\models\Publicados;
 use Rhumsaa\Uuid\Uuid;
 $slim = new \Slim\Slim();
 
@@ -87,7 +87,7 @@ $slim->group('/v1', function () use ($slim) {
           "mensaje" => "No hay más publicaciones."
           );
         echoResponse(200,$response_err);
-        echo "vacio";
+      
       }else {
         echoResponse(200,$response);
       }
@@ -163,6 +163,16 @@ $slim->group('/v1', function () use ($slim) {
 
 
   });
+$slim->get('/publicados/:pag', function($pag) use ($slim){
+
+    $api = new Publicados; 
+    $api->recuperarPublicados($pag);
+
+});
+
+
+
+
 
 });
 /**
