@@ -28,10 +28,14 @@ foreach ($cursor as $doc) {
     echo date('Y-M-d',$fecha->sec);
 }
 
-
-
    return $cursor;
  }
+
+  public function borrarPublicado($_id){
+
+     return $this->db->remove(array("_id" => $_id), array('w' => 1));
+
+  }
 
   
 }

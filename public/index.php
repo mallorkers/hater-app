@@ -163,10 +163,37 @@ $slim->group('/v1', function () use ($slim) {
 
 
   });
+//___________   ↓  PUBLICADOS ↓  ______________
+
 $slim->get('/publicados/:pag', function($pag) use ($slim){
 
     $api = new Publicados; 
     $api->recuperarPublicados($pag);
+    //acabar
+
+});
+
+$slim->delete('/publicados/:_id', function($_id) use ($slim){
+
+    $api = new Publicados; 
+    $borrado=  $api->borrarPublicado($_id);
+
+    if($borrado["n"] > 0) {
+
+      $respuesta = array(
+        "code" => 200, 
+        "message" => "La publicación: ".$_id." ha sido eliminada correctamente."
+        );
+      echoResponse(200,$respuesta);
+      
+    } else {
+      
+      $respuesta = array(
+        "code" => 400, 
+        "message" =>  "No existe una publiación con ese id."
+        );
+      echoResponse(400,$respuesta);
+    }
 
 });
 
