@@ -4,3 +4,4 @@ public/css/*.css
 .*
 !.gitignore
 composer.phar
+gemfile*
