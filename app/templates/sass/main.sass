@@ -17,7 +17,7 @@ body
 	font-family: Arial
 	margin: 0
 	padding: 0
-	background-color: #DDD
+	background-color: #F1F1F1
 
 main
 	width: 100%
@@ -261,12 +261,12 @@ main
 #blog_posts
 	font-size: .8rem
 	width: 80%
+	margin: 0 auto
 	padding: 1rem
 
 	.post
 		padding: 0
-		border-radius: 4px
-		border: 1px solid #B4B4B3
+		//border: 1px solid #B4B4B3
 		box-shadow: 0 0 4px rgba(0,0,0,0.2)
 		margin: 1rem 0
 		overflow: auto
@@ -276,7 +276,14 @@ main
 			border-bottom: 1px solid #999
 			padding-bottom: 6px
 			border-radius-l: 4px
-			background: linear-gradient(to bottom, #f7f7f7 0%,#eae8e8 100%)
+			background: #333
+			color: #ddd
+
+			.tag
+				color: #333
+				box-shadow: none
+				border: 1px solid #FCC781
+				cursor: pointer
 
 			.user_name:before
 				content: " - "
