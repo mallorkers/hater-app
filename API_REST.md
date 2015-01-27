@@ -19,9 +19,10 @@
 **Nombre bd:** haterapp
 ### Colecciones
 
-|Publicar |Moderar | Comentarios  | Usuarios |
+|Publicados |Moderar | Comentarios  | Usuarios |
 |--------|--------| ---------|------- |
 | Contiene los mensajes publicados. | Contiene los mensajes que están por moderar.   |  Contiene los comentarios de cada publicación. | Contiene información de los usuarios. |
+
 ##Esquemas
 
 ### Esquema publicar:
@@ -32,7 +33,7 @@
     "tags": [
     ]
     "usuario": // id
-    "sexo":  // masculino o femenino
+    "sexo":  // Hombre o Mujer
     "fecha":  // new Date()
     "mensaje":
     "num_comentarios":
@@ -84,23 +85,125 @@
 #### Publicados
 | Ruta | Método |  Descripción|
 |--------|--------|-------|
-|     [api/publicados](#solicitud1)  |     GET   |   Obtiene 10 publicaciones.   |
-|	[api/publicados](#solicitud2)|	POST| 	Añade una publicación.				|
-|api/publicados/p/:pag|GET|Obtiene las siguientes 10 publicaciones|
-
+|     [v1/publicados]()  |     GET   |   Obtiene 10 publicaciones.   |
+|	[v1/publicados]() **¿sobra?**|	POST| 	Añade una publicación.				|
+|v1/publicados/p/:pag|GET|Obtiene las siguientes 10 publicaciones|
+|v1/publicados/:id |DELETE|   Elimina una publicación de la colección de publicados.|
 
 #### Moderar
 | Ruta | Método |       Descripción|
 |--------|--------|-------|
-| api/moderar/:id  | GET  | Obtiene una publicación de la colección de moderados |
-|	[api/moderar](#api/moderar_POST)	|	POST| Añade una publicacion a la colección moderados.|
-|api/moderar/:id/:[aprobar/rechazar]| PUT | Actualiza los campos de votación |
-| api/moderar/:id | DELETE | Elimina una publicación de la colección moderados|
+| [v1/moderar/:idUsuario](#[get]v1moderar/:idusuario) | GET  | Obtiene una publicación de la colección de moderados que no haya sido moderada ya por el usuario con el id enviado. |
+|	[v1/moderar](#[post]v1moderar/)	|	POST| Añade una publicacion a la colección moderados.|
+|[v1/moderar/:_idPost/:_idUsuario/:[aprobar/rechazar\]](#[put]v1/moderar/:_idpost/:_idusuario/:[aprobar/rechazar])| PUT | Actualiza los campos de votación |
+| [v1/moderar/:id](#[delete]v1/moderar/:id) | DELETE | Elimina una publicación de la colección moderados|
+
+
+#MODERAR
+
+####[GET]v1moderar/:idUsuario
+
+Envio:
+``` javascript
+//vacio
+```
+
+Respuesta: 
+``` javascript
+  {
+    "_id": 
+    "tag": 
+    "usuario": // id
+    "sexo":  
+    "mensaje":
+    "aprobado": 
+    "rechazado":
+    "usuarios_moderado": // [ id, ... ]
+     }
+
+```
+
+
+####[POST]v1moderar/
+
+Envio: 
+
+``` javascript
+  {
+    "tags": ["Humor", "Sexo"],
+    "usuario": "_id",  // usuario no registrado -> _id de la cookie de sesión.
+    "sexo": "Hombre",
+    "mensaje":  "Hay que acabar esto ya."
+    }
+```
+Respuesta:
+``` javascript
+    {
+       "_id": "afdb1ca2-8f69-436c-844e-eb7f924832e2",
+       "tags":
+       [
+           "Humor",
+           "Sexo"
+       ],
+       "usuario": "_id",
+       "sexo": "Hombre",
+       "mensaje": "Hay que acabar esto ya.",
+       "aprobado": 0,
+       "rechazado": 0,
+       "usuarios_moderado":
+       [
+       ]
+    }
+```
+####[PUT]v1/moderar/:_idPost/:_idUsuario/:[aprobar/rechazar]
+Envio:
+``` javascript
+//vacio
+```
+
+Respuesta:
+``` javascript
+{
+	"code": 400,
+	"message": "No se ha encontrado el registro."
+}
+
+ó
+
+{
+	"code":200,
+	"message":"El campo \"usuarios_moderado\", ha sido actualizado."
+}
+
+
+```
+####[DELETE]v1/moderar/:id
+Envio:
+``` javascript
+//vacio
+```
+
+Respuesta:
+``` javascript
+
+{
+"code": 200,
+"message": "La publicación: c29e9295-7055-4778-8e79-314934cf76b8 ha sido eliminada correctamente."
+}
+
+ó
+
+{
+"code":400,
+"message":"No existe una publiación con ese id."
+}
+
+```
 
 #### Comentarios
 | Ruta | Método |  Descripción|
 |--------|--------|-------|
-|      api/comentarios:_idPublicaión | GET   |   Obtiene todos los comentarios de una determinada publicación.   |
+|      v1/comentarios:_idPublicaión | GET   |   Obtiene todos los comentarios de una determinada publicación.   |
 
 
 
@@ -108,10 +211,10 @@
 #### Usuarios
 | Ruta | Método |  Descripción|
 |--------|--------|-------|
-|      api/usuarios| GET   |   Obtiene todos los usuarios.   |
-|	api/usuarios/id |	GET | 	Obtiene un usuario por su id.	|
-|	api/usuarios	|		POST	| 	Añade un usuario.		|
-|	api/usuarios	|	DELETE		| 	Elimina un usuario.		|
+|      v1/usuarios| GET   |   Obtiene todos los usuarios.   |
+|	v1/usuarios/id |	GET | 	Obtiene un usuario por su id.	|
+|	v1/usuarios	|		POST	| 	Añade un usuario.		|
+|	v1/usuarios	|	DELETE		| 	Elimina un usuario.		|
 
 
 ---
@@ -121,7 +224,7 @@
 
 ## Nueva publicacón
 ###Solicitud1
-######[POST] /api/moderar
+######[POST] /v1/moderar
 
 ``` javascript
   {
@@ -175,57 +278,6 @@ respuesta
      ] 
 ``` 
 
-#MODERAR
-<a name="api/moderar_POST">
-###### Solicitud [POST] /api/moderar/
-
-``` javascript
-  {
-    "tags": 
-    "usuario": //id 
-    "sexo": 
-    "mensaje":   
-    }
-```  
-
-Respuesta
-``` javascript
- 
-  {
-    "_id": 
-    "tag": 
-    "usuario": // id
-    "sexo":  
-    "mensaje":
-    "aprobado": 
-    "rechazado":
-    "usuarios_moderado": // [ id, ... ]
-     }
-
-```
-
-
-Solicitud [PUT] /api/moderados/:id/:[positivo|negativo]
-
-
-``` javascript
-//vacio
-```  
-
-Respuesta
-``` javascript
- 
-  {
-    "_id": 
-    "tag": 
-    "usuario": // id
-    "sexo":  
-    "mensaje":
-    "aprobado": incrementado //aumenta en una unidad la votación elegida
-    "rechazado":
-     }
-
-``` 
 
 
 
