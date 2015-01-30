@@ -73,6 +73,14 @@
 
 ``` javascript
  {
+"_id":
+"usuario":
+"email":
+"fecha_registro": // new \MongoDate()
+"pass":
+"publicaciones": [_id1, _id2],
+"comentarios:" [_id1, _id2]
+
      }
 
 ```
@@ -85,9 +93,7 @@
 #### Publicados
 | Ruta | Método |  Descripción|
 |--------|--------|-------|
-|     [v1/publicados]()  |     GET   |   Obtiene 10 publicaciones.   |
-|	[v1/publicados]() **¿sobra?**|	POST| 	Añade una publicación.				|
-|v1/publicados/p/:pag|GET|Obtiene las siguientes 10 publicaciones|
+|v1/publicados/p/:pag|GET|Obtiene 10 publicaciones. :pag empieza por 1.|
 |v1/publicados/:id |DELETE|   Elimina una publicación de la colección de publicados.|
 
 #### Moderar
@@ -205,16 +211,18 @@ Respuesta:
 |--------|--------|-------|
 |      v1/comentarios:_idPublicaión | GET   |   Obtiene todos los comentarios de una determinada publicación.   |
 
+referenciar los comentarios en la publicacion, y en en docuemnto comentario tener una array de objetos con los comentarios que pertenecen a dicha publicacion, y embeber las respuestas a los cometnarios 
 
 
 ---
 #### Usuarios
 | Ruta | Método |  Descripción|
 |--------|--------|-------|
-|      v1/usuarios| GET   |   Obtiene todos los usuarios.   |
-|	v1/usuarios/id |	GET | 	Obtiene un usuario por su id.	|
-|	v1/usuarios	|		POST	| 	Añade un usuario.		|
-|	v1/usuarios	|	DELETE		| 	Elimina un usuario.		|
+|      v1/usuario| GET   |   Obtiene todos los usuarios.   |
+|      v1/usuario/| GET   |   Obtiene todos los usuarios.   |
+|	v1/usuario/id |	GET | 	Obtiene un usuario por su id.	|
+|	v1/usuario	|		POST	| 	Añade un usuario.		|
+|	v1/usuario	|	DELETE		| 	Elimina un usuario.		|
 
 
 ---
