@@ -53,6 +53,7 @@ $slim->group('/v1', function () use ($slim) {
     $slim->response()->header("Content-Type", "application/json");
 
     try {
+      //Esto lo debería hacer la clase Moderados
       $body = $slim->request()->getBody();
       $input = json_decode($body); //convert the json into array
       $post = array(  
@@ -196,11 +197,29 @@ $slim->delete('/publicados/:_id', function($_id) use ($slim){
     }
 
 });
+//___________   ↓  USUARIOS ↓  ______________
 
+$slim->post('/usuarios/:usuario', function($usuario) use ($slim){
 
+    $api = new Usuarios;
+    $body = $slim->request()->getBody();
+      $usuario = json_decode($body); //convert the json into array
+    $apy->publicar($usuario);
+    
 
+    try {
+      
+     
+     
 
+    
+      echoResponse(201,$post);
 
+    } catch (Exception $e) {
+      echoResponse(400,$e->getMessage());
+    }
+
+    });
 });
 /**
  * Respuesta json para el cliente.
