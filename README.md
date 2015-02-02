@@ -1,6 +1,7 @@
-#Hater App
+#QueChistoso.es
 
-An app for letting your worst thoughts about anything get out in a easy manner.
+Aplicación web y móvil de publicación de chistes moderados por los propios usuarios.
+
 ##Directory structure
 
 ```
