@@ -199,7 +199,7 @@ $slim->delete('/publicados/:_id', function($_id) use ($slim){
 });
 //___________   ↓  USUARIOS ↓  ______________
 
-$slim->post('/usuarios/:usuario', function($usuario) use ($slim){
+$slim->post('/usuario/:usuario', function($usuario) use ($slim){
 
     $api = new Usuarios;
     $body = $slim->request()->getBody();
